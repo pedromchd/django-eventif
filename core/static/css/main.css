@@ -371,4 +371,9 @@ section header h2 {
     border-radius: 100%;
 }
 
+.speakerds img.photo {
+    float: left;
+    padding-left: 15px;
+}
+
 /* Fim Customização */

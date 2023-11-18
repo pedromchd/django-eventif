@@ -1,12 +1,13 @@
 from django.core import mail
 from django.test import TestCase
 
+
 class TestPostValid(TestCase):
     def setUp(self):
         data = dict(
-            name = 'Fulano de Tal',
-            email = 'fulano.tal@mail.com',
-            message = 'Olá mundo!'
+            name='Fulano de Tal',
+            email='fulano.tal@mail.com',
+            message='Olá mundo!',
         )
         self.response = self.client.post('/contato/', data)
 
@@ -16,13 +17,14 @@ class TestPostValid(TestCase):
     def test_send_contact_mail(self):
         self.assertTrue(mail.outbox)
 
+
 class TestMailSend(TestCase):
     def setUp(self):
         data = dict(
-            name = 'Fulano de Tal',
-            email = 'fulano.tal@mail.com',
-            phone = '53912345678',
-            message = 'Olá mundo!'
+            name='Fulano de Tal',
+            email='fulano.tal@mail.com',
+            phone='53912345678',
+            message='Olá mundo!',
         )
         self.response = self.client.post('/contato/', data)
         self.email = mail.outbox[0]
@@ -44,6 +46,7 @@ class TestMailSend(TestCase):
         for content in contents:
             with self.subTest():
                 self.assertIn(content, self.email.body)
+
 
 class TestPostInvalid(TestCase):
     def setUp(self):

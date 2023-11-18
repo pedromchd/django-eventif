@@ -3,19 +3,20 @@ from django.shortcuts import resolve_url as r
 
 from subscriptions.models import Subscription
 
+
 class SubscriptionGetDetail(TestCase):
     def setUp(self):
         self.obj = Subscription.objects.create(
             name='Pedro Machado',
             cpf='12345678901',
             email='pedro.machado@mail.com',
-            phone='53 91234-5678'
+            phone='53 91234-5678',
         )
         self.resp = self.client.get(r('subscriptions:detail', self.obj.pk))
 
     def test_get(self):
         self.assertEqual(200, self.resp.status_code)
-    
+
     def test_template(self):
         self.assertTemplateUsed(self.resp, 'subscriptions/subscription_detail.html')
 
@@ -28,6 +29,7 @@ class SubscriptionGetDetail(TestCase):
         for expect in contents:
             with self.subTest():
                 self.assertContains(self.resp, expect)
+
 
 class SubscriptionDetailNotFound(TestCase):
     def test_not_found(self):

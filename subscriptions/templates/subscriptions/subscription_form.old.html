@@ -1,10 +1,10 @@
 <h1>Formulário de Inscrição</h1>
 {% if messages %}
-    {% for message in messages %}
-        <div>
-            <p>{{ message }}</p>
-        </div>
-    {% endfor %}
+{% for message in messages %}
+<div>
+    <p>{{ message }}</p>
+</div>
+{% endfor %}
 {% endif %}
 <form action="." method="post">
     {% csrf_token %}
@@ -33,5 +33,5 @@
         {{ form.phone }}
     </p>
 
-    <input type="submit" value="Enviar!"/>
+    <input type="submit" value="Enviar!" />
 </form>

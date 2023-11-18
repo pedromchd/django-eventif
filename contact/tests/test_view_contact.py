@@ -1,5 +1,6 @@
 from django.test import TestCase
 
+
 class TestViewContact(TestCase):
     def setUp(self):
         self.response = self.client.get('/contato/')

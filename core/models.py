@@ -1,14 +1,17 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
 
+
 class ContactSpeaker(models.Model):
     EMAIL = 'E'
     PHONE = 'P'
     KINDS = (
         (EMAIL, 'Email'),
-        (PHONE, 'Telefone')
+        (PHONE, 'Telefone'),
     )
-    speaker = models.ForeignKey('Speaker', on_delete=models.CASCADE, verbose_name='palestrante')
+    speaker = models.ForeignKey(
+        'Speaker', on_delete=models.CASCADE, verbose_name='palestrante'
+    )
     kind = models.CharField('tipo', max_length=1, choices=KINDS)
     value = models.CharField('valor', max_length=255)
 
@@ -18,6 +21,7 @@ class ContactSpeaker(models.Model):
 
     def __str__(self):
         return self.value
+
 
 class Speaker(models.Model):
     name = models.CharField('nome', max_length=255)

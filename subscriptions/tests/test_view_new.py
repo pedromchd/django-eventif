@@ -16,8 +16,7 @@ class SubscriptionsNewGet(TestCase):
 
     def test_template(self):
         """Must use subscriptions/subscripiton_form.html"""
-        self.assertTemplateUsed(
-            self.response, 'subscriptions/subscription_form.html')
+        self.assertTemplateUsed(self.response, 'subscriptions/subscription_form.html')
 
     def test_html(self):
         """HTML must contain input tags"""
@@ -26,7 +25,7 @@ class SubscriptionsNewGet(TestCase):
             ('<input', 6),
             ('type="text"', 3),
             ('type="email"', 1),
-            ('type="submit"', 1)
+            ('type="submit"', 1),
         )
         for text, count in tags:
             with self.subTest():
@@ -44,8 +43,12 @@ class SubscriptionsNewGet(TestCase):
 
 class SubscriptionsNewPostValid(TestCase):
     def setUp(self):
-        data = dict(name='Pedro Machado', cpf='12345678901',
-                    email='pedro.machado@mail.com', phone='53 91234-5678')
+        data = dict(
+            name='Pedro Machado',
+            cpf='12345678901',
+            email='pedro.machado@mail.com',
+            phone='53 91234-5678',
+        )
         self.response = self.client.post(r('subscriptions:new'), data)
 
     def test_post(self):
@@ -66,8 +69,7 @@ class SubscriptionsNewPostInvalid(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        self.assertTemplateUsed(
-            self.response, 'subscriptions/subscription_form.html')
+        self.assertTemplateUsed(self.response, 'subscriptions/subscription_form.html')
 
     def test_has_form(self):
         form = self.response.context['form']

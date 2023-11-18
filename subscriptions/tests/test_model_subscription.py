@@ -2,13 +2,14 @@ from datetime import datetime
 from django.test import TestCase
 from subscriptions.models import Subscription
 
+
 class SubscriptionModelTest(TestCase):
     def setUp(self):
         self.obj = Subscription(
-            name = 'Cleber Fonseca',
-            cpf = '12345678901',
-            email = 'profcleberfonseca@gmail.com',
-            phone = '53912345678'
+            name='Cleber Fonseca',
+            cpf='12345678901',
+            email='profcleberfonseca@gmail.com',
+            phone='53912345678',
         )
         self.obj.save()
 

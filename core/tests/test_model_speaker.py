@@ -3,14 +3,15 @@ from django.shortcuts import resolve_url as r
 
 from core.models import Speaker
 
+
 class SpeakerModelTest(TestCase):
     def setUp(self):
         self.speaker = Speaker.objects.create(
-            name = 'Grace Hopper',
-            slug = 'grace-hopper',
-            website = 'https://pt.wikipedia.org/wiki/Grace_Hopper',
-            photo = 'https://cleberfonseca.com.br/img/hopper.jpeg',
-            description = 'Programadora e almirante'
+            name='Grace Hopper',
+            slug='grace-hopper',
+            website='https://pt.wikipedia.org/wiki/Grace_Hopper',
+            photo='https://cleberfonseca.com.br/img/hopper.jpeg',
+            description='Programadora e almirante',
         )
 
     def test_create(self):

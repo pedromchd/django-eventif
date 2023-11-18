@@ -1,8 +1,10 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 
+
 class TestHome(TestCase):
     fixtures = ['keynotes.json']
+
     def setUp(self):
         self.response = self.client.get(r('home'))
 
@@ -23,7 +25,7 @@ class TestHome(TestCase):
             'href="{}"'.format(r('speaker_detail', slug='grace-hopper')),
             'Alan Turing',
             'https://cleberfonseca.com.br/img/turing.jpeg',
-            'href="{}"'.format(r('speaker_detail', slug='alan-turing'))
+            'href="{}"'.format(r('speaker_detail', slug='alan-turing')),
         ]
         for expected in contents:
             with self.subTest():

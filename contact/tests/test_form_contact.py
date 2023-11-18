@@ -2,6 +2,7 @@ from django.test import TestCase
 
 from contact.forms import ContactForm
 
+
 class TestFormContact(TestCase):
     def setUp(self):
         self.response = self.client.get('/contato/')
@@ -21,7 +22,12 @@ class TestFormContact(TestCase):
                 self.assertContains(self.response, tag, count)
 
     def test_view_form_inputs_have_attributes(self):
-        attribs = (('type="text"', 2), ('type="email"', 1), ('type="submit"', 1), ('type="hidden"', 1))
+        attribs = (
+            ('type="text"', 2),
+            ('type="email"', 1),
+            ('type="submit"', 1),
+            ('type="hidden"', 1),
+        )
         for attrib, count in attribs:
             with self.subTest():
                 self.assertContains(self.response, attrib, count)

@@ -10,7 +10,7 @@ class SubscriptionModelAdminTest(TestCase):
             name='Cleber Fonseca',
             cpf='12345678901',
             email='profcleberfonseca@gmail.com',
-            phone='53912345678'
+            phone='53912345678',
         )
 
         self.model_admin = SubscriptionModelAdmin(Subscription, admin.site)

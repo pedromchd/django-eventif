@@ -3,19 +3,20 @@ from django.test import TestCase
 
 from core.models import Speaker, ContactSpeaker
 
+
 class ContactSpeakerModelTest(TestCase):
     def setUp(self):
         self.speaker = Speaker.objects.create(
             name='Cleber Fonseca',
             slug='cleber-fonseca',
-            photo='https://clebercfonseca.com.br/img/perfil.png'
+            photo='https://clebercfonseca.com.br/img/perfil.png',
         )
 
     def test_email(self):
         contact = ContactSpeaker.objects.create(
             speaker=self.speaker,
             kind=ContactSpeaker.EMAIL,
-            value='profcleberfonseca@gmail.com'
+            value='profcleberfonseca@gmail.com',
         )
         self.assertTrue(ContactSpeaker.objects.exists())
 
@@ -23,7 +24,7 @@ class ContactSpeakerModelTest(TestCase):
         contact = ContactSpeaker.objects.create(
             speaker=self.speaker,
             kind=ContactSpeaker.PHONE,
-            value='53-912345678'
+            value='53-912345678',
         )
         self.assertTrue(ContactSpeaker.objects.exists())
 
@@ -31,7 +32,7 @@ class ContactSpeakerModelTest(TestCase):
         contact = ContactSpeaker.objects.create(
             speaker=self.speaker,
             kind='A',
-            value='B'
+            value='B',
         )
         self.assertRaises(ValidationError, contact.full_clean)
 
@@ -39,6 +40,6 @@ class ContactSpeakerModelTest(TestCase):
         contact = ContactSpeaker.objects.create(
             speaker=self.speaker,
             kind='E',
-            value='profcleberfonseca@gmail.com'
+            value='profcleberfonseca@gmail.com',
         )
         self.assertEqual('profcleberfonseca@gmail.com', str(contact))

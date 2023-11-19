@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from subscriptions.admin import SubscriptionModelAdmin, Subscription, admin
 
 from unittest.mock import Mock

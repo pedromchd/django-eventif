@@ -1,3 +1,4 @@
+from django.core import mail
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
 
@@ -41,3 +42,33 @@ class ContactFormTest(TestCase):
 
     def test_form_has_csrf(self):
         self.assertContains(self.response, 'csrfmiddlewaretoken')
+
+
+class ContactPostValidTest(TestCase):
+    def setUp(self):
+        data = dict(
+            name='Pedro Machado',
+            email='pedro.machado@mail.com',
+            phone='053-98429-5133',
+            message='Lorem ipsum dolor sit amet',
+        )
+        self.response = self.client.post(r('contact'), data)
+
+    def test_post_success(self):
+        self.assertEqual(self.response.status_code, 302)
+
+    def test_email_sent(self):
+        self.assertTrue(mail.outbox)
+
+
+class TestPostInvalid(TestCase):
+    def setUp(self):
+        data = {}
+        self.response = self.client.post(r('contact'), data, follow=True)
+
+    def test_redirect_back(self):
+        self.assertEqual(self.response.status_code, 200)
+
+    def test_has_errors(self):
+        form = self.response.context.get('form')
+        self.assertTrue(form.errors)

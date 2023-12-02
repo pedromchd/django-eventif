@@ -20,7 +20,7 @@ class ContactFormTest(TestCase):
         valid = dict(
             name='Pedro Machado',
             email='pedro.machado@mail.com',
-            phone='053-98429-5133',
+            phone='053-91234-5678',
             message='Lorem ipsum dolor sit amet',
         )
         data = dict(valid, **kwargs)

@@ -8,7 +8,7 @@ class ContactEmailTest(TestCase):
         data = dict(
             name='Pedro Machado',
             email='pedro.machado@mail.com',
-            phone='053-98429-5133',
+            phone='053-91234-5678',
             message='Lorem ipsum dolor sit amet',
         )
         self.response = self.client.post(r('contact'), data)
@@ -30,7 +30,7 @@ class ContactEmailTest(TestCase):
         contents = (
             'Pedro Machado',
             'pedro.machado@mail.com',
-            '053-98429-5133',
+            '053-91234-5678',
             'Lorem ipsum dolor sit amet',
         )
         for content in contents:

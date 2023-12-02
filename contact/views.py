@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import messages
 from django.core import mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r
@@ -29,6 +30,7 @@ def create(request):
         context={'contact': cont},
     )
 
+    messages.success(request, 'Mensagem enviada com sucesso!')
     return HttpResponseRedirect(r('contact'))
 
 

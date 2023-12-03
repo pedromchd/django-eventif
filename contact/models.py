@@ -12,8 +12,8 @@ class Contact(models.Model):
     replied = models.BooleanField('respondido', default=False)
 
     class Meta:
-        verbose_name_plural = 'contatos'
-        verbose_name = 'contato'
+        verbose_name = 'mensagem'
+        verbose_name_plural = 'mensagens'
         ordering = ['-created_at', 'replied']
 
     def __str__(self):

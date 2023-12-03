@@ -1,13 +1,13 @@
-Oi {{ name }} seu contato foi respondido.
+Olá {{ response.name }}, seu contato foi respondido.
 
-Telefone: {{ phone }}
-Email: {{ email }}
+Telefone: {{ response.phone }}
+Email: {{ response.email }}
 
 Mensagem:
-{{ message }}
+{{ response.message }}
 
 Resposta:
-{{ response }}
+{{ response.reply }}
 
 Atenciosamente,
 --

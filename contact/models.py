@@ -7,7 +7,7 @@ class Contact(models.Model):
     phone = models.CharField('telefone', max_length=20, blank=True)
     message = models.TextField('mensagem')
     created_at = models.DateTimeField('criado em', auto_now_add=True)
-    reply = models.TextField('resposta')
+    reply = models.TextField('resposta', blank=True)
     updated_at = models.DateTimeField('atualizado em', auto_now=True)
     replied = models.BooleanField('respondido', default=False)
 

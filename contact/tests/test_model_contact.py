@@ -10,6 +10,7 @@ class ContactModelTest(TestCase):
         self.data = Contact(
             name='Pedro Machado',
             email='pedro.machado@mail.com',
+            phone='053-91234-5678',
             message='Lorem ipsum dolor sit amet',
         )
         self.data.save()
@@ -19,9 +20,6 @@ class ContactModelTest(TestCase):
 
     def test_created_at(self):
         self.assertIsInstance(self.data.created_at, datetime)
-
-    def test_phone_default_nao_informado(self):
-        self.assertEqual(self.data.phone, 'Não informado')
 
     def test_replied_default_false(self):
         self.assertFalse(self.data.replied)

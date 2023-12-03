@@ -12,3 +12,7 @@ class ContactForm(forms.ModelForm):
         name = self.cleaned_data['name']
         words = [w.capitalize() for w in name.split()]
         return ' '.join(words)
+
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+        return 'Não informado' if phone == '' else phone

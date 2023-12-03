@@ -16,6 +16,10 @@ class ContactFormTest(TestCase):
         form = self.make_validated_form(phone='')
         self.assertFalse(form.errors)
 
+    def test_phone_empty_value(self):
+        form = self.make_validated_form(phone='')
+        self.assertEqual(form.cleaned_data['phone'], 'Não informado')
+
     def make_validated_form(self, **kwargs):
         valid = dict(
             name='Pedro Machado',

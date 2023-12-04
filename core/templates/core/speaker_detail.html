@@ -2,14 +2,14 @@
 
 {% block content %}
 <section>
-    <div class="speakers content row padding-bottom-3 desktop-8 container">
-        <h2>
-            <a href="{{ speaker.website }}">Grace Hopper</a>
-        </h2>
-        <img class="photo" src="{{ speaker.photo }}">
-        <p>
-            {{ speaker.description|linebreaks }}
-        </p>
-    </div>
+	<div class="speakers content row padding-bottom-3 desktop-8 container">
+		<h2>
+			<a href="{{ speaker.website }}">{{ speaker.name }}</a>
+		</h2>
+		<img class="photo" src="{{ speaker.photo }}">
+		<p>
+			{{ speaker.description|linebreaks }}
+		</p>
+	</div>
 </section>
 {% endblock content %}

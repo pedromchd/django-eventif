@@ -24,6 +24,20 @@ class ContactModelAdmin(admin.ModelAdmin):
     ]
     list_filter = ['created_at', 'updated_at', 'replied']
 
+    actions = ['mark_as_replied']
+
+    def mark_as_replied(self, request, queryset):
+        count = queryset.update(replied=True)
+
+        if count == 1:
+            msg = '{} mensagem foi marcada como respondida'
+        else:
+            msg = '{} mensagens foram marcadas como respondidas'
+
+        self.message_user(request, msg.format(count))
+
+    mark_as_replied.short_description = 'Marcar como respondido'
+
     def save_model(self, request, obj, form, change):
         if not obj.replied and 'reply' in form.changed_data:
             obj.replied = True

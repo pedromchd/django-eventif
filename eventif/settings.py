@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'eventif.wsgi.application'
 DEFAULT_DBURL = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
 
 DATABASES = {
-    'default': config('DATABASE_URL', default=DEFAULT_DBURL, cast=dburl)
+    'default': config('DATABASE_URL', default=DEFAULT_DBURL, cast=dburl),
 }
 
 

@@ -1,5 +1,5 @@
-from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from django.test import TestCase
 
 from core.models import Speaker
 
@@ -11,7 +11,7 @@ class SpeakerModelTest(TestCase):
             slug='grace-hopper',
             website='https://pt.wikipedia.org/wiki/Grace_Hopper',
             photo='https://cleberfonseca.com.br/img/hopper.jpeg',
-            description='Programadora e almirante',
+            description='Programadora e almirante.',
         )
 
     def test_create(self):
